@@ -39,7 +39,10 @@ def generate_json(prompt):
             time.sleep(2 ** (attempt + 1))
             continue
 
-        response.raise_for_status()
+        if not response.ok:
+    raise RuntimeError(
+        f"Erro Groq {response.status_code}: {response.text}"
+    )
 
         result = response.json()
         content = result["choices"][0]["message"]["content"]
