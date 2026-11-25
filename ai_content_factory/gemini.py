@@ -6,6 +6,7 @@ import requests
 
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
+
 def generate_json(prompt):
     api_key = os.environ.get("GROQ_API_KEY")
 
@@ -13,7 +14,7 @@ def generate_json(prompt):
         raise RuntimeError("GROQ_API_KEY não configurada.")
 
     payload = {
-        "model": "llama-3.3-70b-versatile",
+        "model": "openai/gpt-oss-120b",
         "messages": [
             {
                 "role": "user",
@@ -35,17 +36,20 @@ def generate_json(prompt):
             timeout=90
         )
 
-        if response.status_code in [429, 500, 502, 503, 504] and attempt < 4:
-            time.sleep(2 ** (attempt + 1))
-            continue
+        if response.status_code in [429, 500, 502, 503, 504]:
+            if attempt < 4:
+                time.sleep(2 ** (attempt + 1))
+                continue
 
         if not response.ok:
-    raise RuntimeError(
-        f"Erro Groq {response.status_code}: {response.text}"
-    )
+            raise RuntimeError(
+                f"Erro Groq {response.status_code}: {response.text}"
+            )
 
         result = response.json()
         content = result["choices"][0]["message"]["content"]
+
         return json.loads(content)
 
     raise RuntimeError("Não foi possível gerar conteúdo com o Groq.")
+    
