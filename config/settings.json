@@ -1,15 +1,19 @@
 {
   "channel": {
-    "niche": "Tecnologia e inteligência artificial",
+    "niche": "Notícias e assuntos em alta no Brasil e no mundo",
     "language": "Português brasileiro",
     "style": "Vídeos informativos com narração",
     "target_duration_seconds": 40,
     "videos_per_run": 1
   },
   "sources": [
-    "https://feeds.feedburner.com/TechCrunch/",
-    "https://www.theverge.com/rss/index.xml",
-    "https://news.google.com/rss/search?q=intelig%C3%AAncia+artificial&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    "https://trends.google.com/trending/rss?geo=BR",
+    "https://news.google.com/rss/search?q=Brasil+quando%3A1d&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+    "https://news.google.com/rss/search?q=mundo+quando%3A1d&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+    "https://news.google.com/rss/search?q=economia+neg%C3%B3cios+quando%3A1d&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+    "https://news.google.com/rss/search?q=tecnologia+ci%C3%AAncia+quando%3A1d&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+    "https://news.google.com/rss/search?q=esportes+quando%3A1d&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+    "https://news.google.com/rss/search?q=entretenimento+cultura+quando%3A1d&hl=pt-BR&gl=BR&ceid=BR%3Apt-419"
   ],
   "video": {
     "width": 1080,
