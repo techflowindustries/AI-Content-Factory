@@ -5,7 +5,7 @@ API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:gener
 
 def generate_json(prompt):
     api_key = os.environ.get("GEMINI_API_KEY")
-    model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+    model = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY não configurada.")
     response = requests.post(
