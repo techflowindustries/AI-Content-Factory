@@ -21,7 +21,7 @@ def generate_elevenlabs_audio(text: str, output_path: str) -> str:
       ELEVENLABS_OUTPUT_FORMAT (default: mp3_44100_128)
     """
     api_key = os.getenv("ELEVENLABS_API_KEY")
-    voice_id = os.getenv("ELEVENLABS_VOICE_ID")
+    voice_id = os.getenv("ELEVENLABS_VOICE_ID", "CwhRBWXzGAHq8TQ4Fs17")
     model_id = os.getenv("ELEVENLABS_MODEL_ID", "eleven_v4")
     output_format = os.getenv("ELEVENLABS_OUTPUT_FORMAT", "mp3_44100_128")
 
