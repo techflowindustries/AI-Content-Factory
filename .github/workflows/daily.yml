@@ -1,14 +1,18 @@
-
-name: AI Content Factory
+name: Daily What-If Video
 
 on:
   schedule:
-    - cron: '0 6,14,22 * * *'
+    # 03:00 in Itajaí (UTC-3). GitHub Actions cron is UTC.
+    - cron: '0 6 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
 
     steps:
       - name: Checkout repository
@@ -27,14 +31,25 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate video
-        run: python main.py
+      - name: Generate What-If video
+        run: python whatif_main.py
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_TEXT_MODEL: gemini-2.5-flash
+          GEMINI_VIDEO_MODEL: gemini-omni-1.2-flash
+          GEMINI_VIDEO_RESOLUTION: 720p
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: CwhRBWXzGAHq8TQ4Fs17
+          ELEVENLABS_MODEL_ID: eleven_v3
+          OUTPUT_DIR: output
+          WORK_DIR: work
 
-      - name: Upload video
+      - name: Upload finished video and production files
         uses: actions/upload-artifact@v4
         with:
-          name: generated-videos
-          path: output/
+          name: whatif-video-${{ github.run_number }}
+          path: |
+            output/
+            work/story.json
           if-no-files-found: error
+          retention-days: 7
