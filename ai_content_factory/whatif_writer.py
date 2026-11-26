@@ -69,7 +69,7 @@ def _gemini_json(prompt: str) -> dict[str, Any]:
 
 
 def _word_count(text: str) -> int:
-    return len(re.findall(r"\\b[\\w’'-]+\\b", text))
+    return len(text.split())
 
 
 def choose_best_idea() -> dict[str, Any]:
