@@ -40,7 +40,7 @@ jobs:
           GEMINI_VIDEO_RESOLUTION: 720p
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: CwhRBWXzGAHq8TQ4Fs17
-          ELEVENLABS_MODEL_ID: eleven_v3
+          ELEVENLABS_MODEL_ID: eleven_v4
           OUTPUT_DIR: output
           WORK_DIR: work
 
