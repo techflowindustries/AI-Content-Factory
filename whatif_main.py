@@ -39,7 +39,7 @@ def main() -> None:
         prompt = clip["prompt"]
         if number > 1:
             prompt += (
-                "\\n\\nCONTINUITY REQUIREMENT: The supplied image is the exact final "
+                "\n\nCONTINUITY REQUIREMENT: The supplied image is the exact final "
                 "frame of the immediately preceding clip. Treat it as the literal first "
                 "frame of this clip. Continue the same shot state, character designs, "
                 "positions, props, lighting and environment. Do not redesign or restart."
